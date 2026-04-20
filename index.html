@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,14 +11,14 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --blue:        #6a93b0;
-      --blue-light:  #a8c4d8;
-      --blue-pale:   #dde8f0;
-      --ivory:       #faf7f2;
-      --champagne:   #f0ebe1;
-      --text:        #1c2d3a;
-      --muted:       #5a7a90;
-      --white:       #ffffff;
+      --blue:       #6a93b0;
+      --blue-light: #a8c4d8;
+      --blue-pale:  #dde8f0;
+      --ivory:      #faf7f2;
+      --champagne:  #f0ebe1;
+      --text:       #1c2d3a;
+      --muted:      #5a7a90;
+      --white:      #ffffff;
     }
 
     html { scroll-behavior: smooth; }
@@ -31,138 +31,50 @@
       min-height: 100vh;
     }
 
-    /* ── LOCK SCREEN ── */
-    #lock {
-      position: fixed; inset: 0;
-      background: var(--ivory);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      z-index: 999; gap: 2rem; padding: 2rem;
-    }
-    #lock .lock-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 8vw, 4rem);
-      font-weight: 300; font-style: italic;
-      color: var(--text); text-align: center; line-height: 1.1;
-    }
-    #lock .lock-sub {
-      font-size: 0.85rem; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--muted);
-    }
-    #lock .divider { width: 60px; height: 1px; background: var(--blue); }
-    #lock-form {
-      display: flex; flex-direction: column;
-      gap: 0.75rem; align-items: center;
-      width: 100%; max-width: 320px;
-    }
-    #lock-input {
-      width: 100%; padding: 0.85rem 1.25rem;
-      border: 1px solid var(--blue-light); background: var(--white);
-      font-family: 'Jost', sans-serif; font-size: 1rem; font-weight: 300;
-      color: var(--text); letter-spacing: 0.1em; text-align: center;
-      border-radius: 2px; outline: none; transition: border-color 0.2s;
-    }
-    #lock-input:focus { border-color: var(--blue); }
-    #lock-btn {
-      width: 100%; padding: 0.85rem;
-      background: var(--blue); color: var(--white);
-      font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 400;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      border: none; border-radius: 2px; cursor: pointer; transition: background 0.2s;
-    }
-    #lock-btn:hover { background: var(--text); }
-    #lock-error { font-size: 0.8rem; color: #c0392b; opacity: 0; transition: opacity 0.3s; }
-    #lock-error.show { opacity: 1; }
-
-    /* ── MAIN CONTENT ── */
-    #main { display: block; }
-
-    /* ── STICKY MINI COUNTDOWN ── */
+    /* ── MINI COUNTDOWN (sticky) ── */
     #mini-cd {
-      position: fixed;
-      top: 1rem; right: 1.25rem;
-      z-index: 100;
-      background: rgba(250, 247, 242, 0.88);
-      backdrop-filter: blur(8px);
-      border: 1px solid var(--blue-light);
-      padding: 0.45rem 0.9rem;
+      position: fixed; top: 1rem; right: 1.25rem; z-index: 100;
+      background: rgba(250,247,242,0.88); backdrop-filter: blur(8px);
+      border: 1px solid var(--blue-light); padding: 0.45rem 0.9rem;
       display: flex; align-items: baseline; gap: 0.5rem;
-      opacity: 0; pointer-events: none;
-      transition: opacity 0.4s;
-      border-radius: 2px;
+      opacity: 0; pointer-events: none; transition: opacity 0.4s; border-radius: 2px;
     }
     #mini-cd.visible { opacity: 1; }
-    #mini-cd span {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem; font-style: italic; color: var(--text);
-    }
-    #mini-cd .mini-label {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.6rem; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--blue); align-self: center;
-    }
+    #mini-cd span { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; color: var(--text); }
+    #mini-cd .mini-label { font-family: 'Jost', sans-serif; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue); align-self: center; }
 
     /* ── HERO ── */
     .hero {
-      min-height: 100svh;
-      background: var(--ivory);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center; padding: 4rem 2rem;
-      position: relative; overflow: hidden;
+      min-height: 100svh; background: var(--ivory);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 4rem 2rem; position: relative; overflow: hidden;
     }
     .hero::before {
       content: ''; position: absolute; inset: 0;
       background: radial-gradient(ellipse 90% 70% at 50% 40%, #b8d4e8 0%, #ddeaf5 50%, transparent 75%);
       pointer-events: none;
     }
-    .hero-eyebrow {
-      font-size: 0.72rem; letter-spacing: 0.3em;
-      text-transform: uppercase; color: var(--blue);
-      margin-bottom: 1.5rem; position: relative;
-    }
-    .hero-names {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3.5rem, 12vw, 8rem);
-      font-weight: 300; line-height: 1;
-      color: var(--text); position: relative;
-    }
+    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--blue); margin-bottom: 1.5rem; position: relative; }
+    .hero-names { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 12vw, 8rem); font-weight: 300; line-height: 1; color: var(--text); position: relative; }
     .hero-names span { font-style: italic; }
     .hero-amp { font-style: italic; color: var(--blue); padding: 0 0.25em; }
-    .hero-date {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.1rem, 3vw, 1.5rem);
-      font-weight: 300; color: var(--muted);
-      margin-top: 1.5rem; letter-spacing: 0.15em; position: relative;
-    }
-    .hero-line {
-      width: 1px; height: 50px;
-      background: linear-gradient(to bottom, var(--blue), transparent);
-      margin: 1.5rem auto 0; position: relative;
-    }
+    .hero-date { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 3vw, 1.5rem); font-weight: 300; color: var(--muted); margin-top: 1.5rem; letter-spacing: 0.15em; position: relative; }
+    .hero-line { width: 1px; height: 50px; background: linear-gradient(to bottom, var(--blue), transparent); margin: 1.5rem auto 0; position: relative; }
+
+    /* ── SHARED ── */
+    .section-label { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--blue); margin-bottom: 1.25rem; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.6rem, 7vw, 4.2rem); font-weight: 300; font-style: italic; margin-bottom: 1.5rem; line-height: 1.15; }
+    .section-text { color: var(--muted); line-height: 1.85; font-size: 0.95rem; max-width: 480px; margin: 0 auto; }
 
     /* ── INVITACIÓN ── */
     .photo-section { background: var(--blue-pale); padding: 5rem 2rem; }
     .invitation-inner { max-width: 1100px; margin: 0 auto; }
     .invitation-header { text-align: center; margin-bottom: 3rem; }
-    .invitation-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 4rem; align-items: center;
-    }
+    .invitation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
     .photo-frame { position: relative; width: 100%; overflow: hidden; }
-    .photo-frame::before {
-      content: ''; position: absolute;
-      top: -10px; left: -10px; right: 10px; bottom: 10px;
-      border: 1px solid var(--blue-light); pointer-events: none; z-index: 1;
-    }
-    .photo-frame img {
-      width: 100%; display: block;
-      aspect-ratio: 4/5; object-fit: cover; object-position: center;
-    }
-    .invitation-actions {
-      display: flex; flex-direction: column;
-      gap: 1rem; align-items: flex-start;
-    }
+    .photo-frame::before { content: ''; position: absolute; top: -10px; left: -10px; right: 10px; bottom: 10px; border: 1px solid var(--blue-light); pointer-events: none; z-index: 1; }
+    .photo-frame img { width: 100%; display: block; aspect-ratio: 4/5; object-fit: cover; object-position: center; }
+    .invitation-actions { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
     .invitation-actions .section-label { margin-bottom: 0.5rem; }
     .btn-nav {
       width: 100%; padding: 1rem 1.5rem;
@@ -174,14 +86,9 @@
       cursor: pointer; transition: background 0.2s, border-color 0.2s;
     }
     .btn-nav:hover { background: var(--blue-pale); border-color: var(--blue); }
-    .btn-nav .btn-arrow {
-      font-size: 1rem; color: var(--blue); margin-left: 1rem;
-      transition: transform 0.2s;
-    }
+    .btn-nav .btn-arrow { font-size: 1rem; color: var(--blue); margin-left: 1rem; transition: transform 0.2s; }
     .btn-nav:hover .btn-arrow { transform: translateX(4px); }
-    .btn-nav-primary {
-      background: var(--blue); border-color: var(--blue); color: var(--white);
-    }
+    .btn-nav-primary { background: var(--blue); border-color: var(--blue); color: var(--white); }
     .btn-nav-primary:hover { background: var(--text); border-color: var(--text); }
     .btn-nav-primary .btn-arrow { color: var(--white); }
     @media (max-width: 720px) {
@@ -189,210 +96,65 @@
       .invitation-actions { align-items: stretch; }
     }
 
-    /* ── SECTION WRAPPER ── */
-    .section {
-      padding: 5rem 2rem; max-width: 700px;
-      margin: 0 auto; text-align: center;
-    }
-    .section-label {
-      font-size: 0.72rem; letter-spacing: 0.3em;
-      text-transform: uppercase; color: var(--blue); margin-bottom: 1.25rem;
-    }
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.6rem, 7vw, 4.2rem);
-      font-weight: 300; font-style: italic;
-      margin-bottom: 1.5rem; line-height: 1.15;
-    }
-    .section-text {
-      color: var(--muted); line-height: 1.85;
-      font-size: 0.95rem; max-width: 480px; margin: 0 auto;
-    }
+    /* ── PROGRAMA ── */
+    .program-section { padding: 5rem 2rem; max-width: 700px; margin: 0 auto; text-align: center; }
+    .program-list { list-style: none; margin-top: 2.5rem; display: flex; flex-direction: column; }
+    .program-item { display: flex; align-items: baseline; gap: 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--champagne); justify-content: center; }
+    .prog-time { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: var(--blue); min-width: 80px; text-align: right; }
+    .prog-event { font-size: 0.9rem; letter-spacing: 0.05em; color: var(--text); text-align: left; min-width: 160px; }
 
-    /* ── PROGRAM ── */
-    .program-section { background: var(--ivory); }
-    .program-list {
-      list-style: none; margin-top: 2.5rem;
-      display: flex; flex-direction: column; gap: 0;
-    }
-    .program-item {
-      display: flex; align-items: baseline;
-      gap: 1.5rem; padding: 1rem 0;
-      border-bottom: 1px solid var(--champagne);
-      justify-content: center;
-    }
-    .prog-time {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem; font-style: italic;
-      color: var(--blue); min-width: 80px; text-align: right;
-    }
-    .prog-event {
-      font-size: 0.9rem; letter-spacing: 0.05em;
-      color: var(--text); text-align: left; min-width: 160px;
-    }
-
-    /* ── LOCATION ── */
+    /* ── LUGARES ── */
     .location-block { background: var(--blue-pale); padding: 5rem 2rem; }
     .location-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
-    .venue-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 2.5rem; margin-top: 3rem; text-align: left;
-    }
-    .venue-card {
-      background: var(--ivory); border: 1px solid var(--blue-light);
-      padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem;
-    }
-    .venue-card-label {
-      font-size: 0.65rem; letter-spacing: 0.3em;
-      text-transform: uppercase; color: var(--blue);
-    }
-    .venue-card-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.65rem; font-weight: 300; font-style: italic;
-      color: var(--text); line-height: 1.2;
-    }
+    .venue-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 3rem; text-align: left; }
+    .venue-card { background: var(--ivory); border: 1px solid var(--blue-light); padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem; }
+    .venue-card-label { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--blue); }
+    .venue-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.65rem; font-weight: 300; font-style: italic; color: var(--text); line-height: 1.2; }
     .map-container { border: 1px solid var(--blue-light); overflow: hidden; }
     .map-container iframe { width: 100%; height: 220px; border: none; display: block; }
-    .loc-details-stack { display: flex; flex-direction: column; gap: 0.65rem; }
     .loc-item { display: flex; flex-direction: column; gap: 0.15rem; }
-    .loc-item strong {
-      font-size: 0.65rem; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--blue); font-weight: 400;
-    }
-    .loc-item span {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.05rem; font-style: italic; color: var(--text);
-    }
-    /* Directions link */
-    .loc-directions {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--blue); text-decoration: none;
-      border-bottom: 1px solid var(--blue-light);
-      padding-bottom: 0.1rem; transition: color 0.2s, border-color 0.2s;
-      margin-top: 0.25rem;
-    }
-    .loc-directions:hover { color: var(--text); border-color: var(--text); }
+    .loc-item strong { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue); font-weight: 400; }
+    .loc-item span { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; color: var(--text); }
     @media (max-width: 720px) { .venue-grid { grid-template-columns: 1fr; } }
 
     /* ── DONATIVO ── */
     .donativo-section { background: var(--ivory); padding: 5rem 2rem; }
     .donativo-inner { max-width: 800px; margin: 0 auto; text-align: center; }
-    .donativo-intro {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem; font-style: italic;
-      color: var(--muted); line-height: 1.8;
-      max-width: 520px; margin: 0 auto 2.5rem;
-    }
-    /* Donativo: dos columnas de persona, cada una con sus dos métodos */
-    .donativo-personas {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 2rem; margin-top: 0;
-    }
+    .donativo-intro { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: var(--muted); line-height: 1.8; max-width: 520px; margin: 0 auto 2.5rem; }
+    .donativo-personas { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
     .donativo-persona { display: flex; flex-direction: column; gap: 1rem; }
-    .donativo-persona-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem; font-weight: 300; font-style: italic;
-      color: var(--text); text-align: center; margin-bottom: 0.25rem;
-    }
-    .donativo-grid {
-      display: flex; flex-direction: column;
-      gap: 0.75rem;
-    }
+    .donativo-persona-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; font-style: italic; color: var(--text); text-align: center; margin-bottom: 0.25rem; }
+    .donativo-cards { display: flex; flex-direction: column; gap: 0.75rem; }
     .donativo-card {
-      border: 1px solid var(--blue-light);
-      background: var(--blue-pale);
-      padding: 1.4rem 1.25rem;
-      display: flex; flex-direction: column;
-      align-items: center; gap: 0.6rem;
-      cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s;
-      position: relative;
+      border: 1px solid var(--blue-light); background: var(--blue-pale);
+      padding: 1.4rem 1.25rem; display: flex; flex-direction: column;
+      align-items: center; gap: 0.6rem; cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s; position: relative;
     }
-    .donativo-card:hover {
-      border-color: var(--blue);
-      box-shadow: 0 0 0 1px var(--blue);
-    }
-    .donativo-card-label {
-      font-size: 0.6rem; letter-spacing: 0.25em;
-      text-transform: uppercase; color: var(--blue);
-    }
-    .donativo-card-value {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.82rem; letter-spacing: 0.1em;
-      color: var(--text); text-align: center;
-      user-select: all;
-    }
-    .donativo-card-hint {
-      font-size: 0.58rem; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--blue-light);
-    }
-    .donativo-card-confirm {
-      font-size: 0.7rem; color: var(--blue);
-      opacity: 0; transition: opacity 0.3s;
-      position: absolute; bottom: 0.5rem;
-    }
+    .donativo-card:hover { border-color: var(--blue); box-shadow: 0 0 0 1px var(--blue); }
+    .donativo-card-label { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--blue); }
+    .donativo-card-value { font-family: 'Jost', sans-serif; font-size: 0.82rem; letter-spacing: 0.1em; color: var(--text); text-align: center; user-select: all; }
+    .donativo-card-hint { font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue-light); }
+    .donativo-card-confirm { font-size: 0.7rem; color: var(--blue); opacity: 0; transition: opacity 0.3s; position: absolute; bottom: 0.5rem; }
     .donativo-card-confirm.show { opacity: 1; }
     @media (max-width: 600px) { .donativo-personas { grid-template-columns: 1fr; } }
 
-    /* ── RSVP ── */
+    /* ── RSVP / GOOGLE FORM ── */
     .rsvp-section { background: var(--text); padding: 5rem 2rem; }
-    .rsvp-inner { max-width: 520px; margin: 0 auto; text-align: center; }
+    .rsvp-inner { max-width: 640px; margin: 0 auto; text-align: center; }
     .rsvp-inner .section-label { color: var(--blue-light); }
     .rsvp-inner .section-title { color: var(--ivory); }
-    .rsvp-form { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
-    .rsvp-row { display: flex; gap: 1rem; }
-    .rsvp-field { flex: 1; display: flex; flex-direction: column; gap: 0.4rem; text-align: left; }
-    .rsvp-field label {
-      font-size: 0.65rem; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--blue-light);
-    }
-    .rsvp-field input,
-    .rsvp-field select,
-    .rsvp-field textarea {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.15);
-      padding: 0.75rem 1rem; color: var(--ivory);
-      font-family: 'Jost', sans-serif; font-size: 0.9rem; font-weight: 300;
-      border-radius: 2px; outline: none; transition: border-color 0.2s; resize: vertical;
-    }
-    .rsvp-field select option { background: var(--text); }
-    .rsvp-field input:focus,
-    .rsvp-field select:focus,
-    .rsvp-field textarea:focus { border-color: var(--blue); }
-    .rsvp-submit {
-      margin-top: 0.5rem; padding: 0.9rem;
-      background: var(--blue); color: var(--white);
-      border: none; border-radius: 2px;
-      font-family: 'Jost', sans-serif; font-size: 0.75rem; font-weight: 400;
-      letter-spacing: 0.25em; text-transform: uppercase;
-      cursor: pointer; transition: background 0.2s, transform 0.1s;
-    }
-    .rsvp-submit:hover { background: var(--blue-light); }
-    .rsvp-submit:active { transform: scale(0.98); }
-    #rsvp-thanks {
-      display: none; color: var(--blue-light);
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem; font-style: italic; margin-top: 1.5rem;
-    }
+    .gform-wrap { margin-top: 2.5rem; border: 1px solid rgba(255,255,255,0.12); border-radius: 2px; overflow: hidden; }
+    .gform-wrap iframe { width: 100%; border: none; display: block; min-height: 820px; }
 
     /* ── FOOTER ── */
-    footer {
-      text-align: center; padding: 3rem 2rem;
-      background: var(--ivory); color: var(--blue-light);
-      font-size: 0.75rem; letter-spacing: 0.15em;
-    }
-    footer .footer-names {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem; font-style: italic; font-weight: 300;
-      color: var(--text); margin-bottom: 0.5rem; display: block;
-    }
-
-    @media (max-width: 480px) { .rsvp-row { flex-direction: column; } }
+    footer { text-align: center; padding: 3rem 2rem; background: var(--ivory); color: var(--blue-light); font-size: 0.75rem; letter-spacing: 0.15em; }
+    footer .footer-names { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-style: italic; font-weight: 300; color: var(--text); margin-bottom: 0.5rem; display: block; }
   </style>
 </head>
 <body>
 
-<!-- ════════════ MINI COUNTDOWN (sticky) ════════════ -->
+<!-- MINI COUNTDOWN -->
 <div id="mini-cd">
   <span id="mcd-days">--</span><span class="mini-label">d</span>
   <span id="mcd-hours">--</span><span class="mini-label">h</span>
@@ -400,241 +162,167 @@
   <span id="mcd-secs">--</span><span class="mini-label">s</span>
 </div>
 
-<!-- ════════════════════════════════ MAIN PAGE ════════════════════════════════ -->
-<div id="main">
+<!-- HERO -->
+<section class="hero" id="hero">
+  <p class="hero-eyebrow">¡Nos casamos!</p>
+  <h1 class="hero-names">
+    <span>Paula</span><span class="hero-amp">&amp;</span><span>Stampa</span>
+  </h1>
+  <p class="hero-date">Sábado · 7 Noviembre 2026 · Madrid</p>
+  <div class="hero-line"></div>
+</section>
 
-  <!-- HERO -->
-  <section class="hero" id="hero">
-    <p class="hero-eyebrow">¡Nos casamos!</p>
-    <h1 class="hero-names">
-      <span>Paula</span>
-      <span class="hero-amp">&amp;</span>
-      <span>Stampa</span>
-    </h1>
-    <p class="hero-date">Sábado · 7 Noviembre 2026 · Madrid</p>
-    <div class="hero-line"></div>
-  </section>
-
-  <!-- INVITACIÓN -->
-  <div class="photo-section">
-    <div class="invitation-inner">
-      <div class="invitation-header">
-        <p class="section-label">La invitación</p>
-        <h2 class="section-title">Invitación</h2>
+<!-- INVITACIÓN -->
+<div class="photo-section">
+  <div class="invitation-inner">
+    <div class="invitation-header">
+      <p class="section-label">La invitación</p>
+      <h2 class="section-title">Invitación</h2>
+    </div>
+    <div class="invitation-grid">
+      <div class="photo-frame">
+        <img src="IMG_1363.jpeg" alt="Invitación" />
       </div>
-      <div class="invitation-grid">
-        <div class="photo-frame">
-          <img src="IMG_1363.jpeg" alt="Invitación" />
+      <div class="invitation-actions">
+        <p class="section-label">¿Qué quieres ver?</p>
+        <a class="btn-nav" href="#programa">Programa del día <span class="btn-arrow">→</span></a>
+        <a class="btn-nav" href="#lugares">Los lugares <span class="btn-arrow">→</span></a>
+        <a class="btn-nav" href="#donativo">Donativos <span class="btn-arrow">→</span></a>
+        <a class="btn-nav btn-nav-primary" href="#confirmar">Confirmar asistencia <span class="btn-arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRAMA -->
+<section class="program-section" id="programa">
+  <p class="section-label">El día</p>
+  <h2 class="section-title">Programa</h2>
+  <ul class="program-list">
+    <li class="program-item"><span class="prog-time">12:00</span><span class="prog-event">Misa</span></li>
+    <li class="program-item"><span class="prog-time">14:00</span><span class="prog-event">Aperitivo</span></li>
+    <li class="program-item"><span class="prog-time">14:30</span><span class="prog-event">Comida</span></li>
+    <li class="program-item"><span class="prog-time">16:30</span><span class="prog-event">Copas</span></li>
+    <li class="program-item"><span class="prog-time">18:00</span><span class="prog-event">Fin A</span></li>
+    <li class="program-item"><span class="prog-time">20:00</span><span class="prog-event">Fiesta</span></li>
+    <li class="program-item" style="border-bottom:none"><span class="prog-time">00:00</span><span class="prog-event">Fin B</span></li>
+  </ul>
+</section>
+
+<!-- LUGARES -->
+<div class="location-block" id="lugares">
+  <div class="location-inner">
+    <p class="section-label">¿A dónde ir?</p>
+    <h2 class="section-title">Los lugares</h2>
+    <p class="section-text">Celebraremos nuestra boda en dos lugares muy especiales de Madrid.</p>
+    <div class="venue-grid">
+      <div class="venue-card">
+        <p class="venue-card-label">Ceremonia · 12:00</p>
+        <h3 class="venue-card-title">Basílica de Jesús de Medinaceli</h3>
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.5!2d-3.6981!3d40.4142!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42288263f97cfd%3A0x21b9c5b25fc9db62!2sBas%C3%ADlica+de+Jes%C3%BAs+de+Medinaceli!5e0!3m2!1ses!2ses!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-        <div class="invitation-actions">
-          <p class="section-label">¿Qué quieres ver?</p>
-          <a class="btn-nav" href="#programa">
-            Programa del día <span class="btn-arrow">→</span>
-          </a>
-          <a class="btn-nav" href="#lugares">
-            Los lugares <span class="btn-arrow">→</span>
-          </a>
-          <a class="btn-nav" href="#donativo">
-            Donativos <span class="btn-arrow">→</span>
-          </a>
-          <a class="btn-nav btn-nav-primary" href="#confirmar">
-            Confirmar asistencia <span class="btn-arrow">→</span>
-          </a>
+        <div class="loc-item">
+          <strong>Dirección</strong>
+          <span>Pl. de Jesús, 2, Centro, 28014 Madrid</span>
+        </div>
+      </div>
+      <div class="venue-card">
+        <p class="venue-card-label">Comida · 14:00</p>
+        <h3 class="venue-card-title">La Masía de José Luis</h3>
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.5!2d-3.7337!3d40.4152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422808e2b000b7%3A0xfa6434b04cb35239!2sLa+Mas%C3%ADa+de+Jos%C3%A9+Luis!5e0!3m2!1ses!2ses!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="loc-item">
+          <strong>Dirección</strong>
+          <span>P.º de la Puerta del Ángel, 3, Moncloa - Aravaca, 28011 Madrid</span>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- PROGRAMA -->
-  <section class="section program-section" id="programa">
-    <p class="section-label">El día</p>
-    <h2 class="section-title">Programa</h2>
-    <ul class="program-list">
-      <li class="program-item"><span class="prog-time">12:00</span><span class="prog-event">Misa</span></li>
-      <li class="program-item"><span class="prog-time">14:00</span><span class="prog-event">Aperitivo</span></li>
-      <li class="program-item"><span class="prog-time">14:30</span><span class="prog-event">Comida</span></li>
-      <li class="program-item"><span class="prog-time">16:30</span><span class="prog-event">Copas</span></li>
-      <li class="program-item"><span class="prog-time">18:00</span><span class="prog-event">Fin A</span></li>
-      <li class="program-item"><span class="prog-time">20:00</span><span class="prog-event">Fiesta</span></li>
-      <li class="program-item" style="border-bottom:none"><span class="prog-time">00:00</span><span class="prog-event">Fin B</span></li>
-    </ul>
-  </section>
-
-  <!-- LOCATION — blue-pale -->
-  <div class="location-block" id="lugares">
-    <div class="location-inner">
-      <p class="section-label">¿A dónde ir?</p>
-      <h2 class="section-title">Los lugares</h2>
-      <p class="section-text">Celebraremos nuestra boda en dos lugares muy especiales de Madrid.</p>
-      <div class="venue-grid">
-        <div class="venue-card">
-          <p class="venue-card-label">Ceremonia · 12:00</p>
-          <h3 class="venue-card-title">Basílica de Jesús de Medinaceli</h3>
-          <div class="map-container">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.5!2d-3.6981!3d40.4142!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42288263f97cfd%3A0x21b9c5b25fc9db62!2sBas%C3%ADlica+de+Jes%C3%BAs+de+Medinaceli!5e0!3m2!1ses!2ses!4v1"
-              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-          </div>
-          <div class="loc-details-stack">
-            <div class="loc-item">
-              <strong>Dirección</strong>
-              <span>Pl. de Jesús, 2, Centro, 28014 Madrid</span>
-            </div>
-          </div>
-        </div>
-        <div class="venue-card">
-          <p class="venue-card-label">Comida · 14:00</p>
-          <h3 class="venue-card-title">La Masía de José Luis</h3>
-          <div class="map-container">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.5!2d-3.7337!3d40.4152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422808e2b000b7%3A0xfa6434b04cb35239!2sLa+Mas%C3%ADa+de+Jos%C3%A9+Luis!5e0!3m2!1ses!2ses!4v1"
-              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-          </div>
-          <div class="loc-details-stack">
-            <div class="loc-item">
-              <strong>Dirección</strong>
-              <span>P.º de la Puerta del Ángel, 3, Moncloa - Aravaca, 28011 Madrid</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DONATIVO -->
-  
-  <div class="donativo-section" id="donativo">
+<!-- DONATIVO -->
+<div class="donativo-section" id="donativo">
   <div class="donativo-inner">
     <p class="section-label">¿Cómo puedo contribuir?</p>
     <h2 class="section-title">Donativo</h2>
-    <p class="donativo-intro">
-      Vuestra presencia es el mejor regalo. Si queréis contribuir a nuestro futuro, podéis hacerlo aquí:
-    </p>
+    <p class="donativo-intro">Vuestra presencia es el mejor regalo. Si queréis contribuir a nuestro futuro, podéis hacerlo aquí:</p>
+    <div class="donativo-personas">
 
-    <div class="donativo-grid">
-
-      <!-- BIZUM PAULA -->
-      <div class="donativo-card" onclick="copyText(this)">
-        <p class="donativo-card-label">Bizum</p>
-        <p class="donativo-card-name">Paula</p>
-        <p class="donativo-card-value">600 000 000</p> <!-- ← CAMBIAR -->
-        <p class="donativo-card-hint">Pulse para copiar</p>
-        <p class="donativo-card-confirm">¡Copiado!</p>
+      <!-- PAULA -->
+      <div class="donativo-persona">
+        <p class="donativo-persona-name">Paula</p>
+        <div class="donativo-cards">
+          <div class="donativo-card" onclick="copyText(this)">
+            <p class="donativo-card-label">Bizum</p>
+            <p class="donativo-card-value">600 000 000</p> <!-- ← CAMBIAR -->
+            <p class="donativo-card-hint">Pulsa para copiar</p>
+            <p class="donativo-card-confirm">¡Copiado!</p>
+          </div>
+          <div class="donativo-card" onclick="copyText(this)">
+            <p class="donativo-card-label">Transferencia</p>
+            <p class="donativo-card-value">ES08 1234 5678 9012 3456 7890</p> <!-- ← CAMBIAR -->
+            <p class="donativo-card-hint">Pulsa para copiar</p>
+            <p class="donativo-card-confirm">¡Copiado!</p>
+          </div>
+        </div>
       </div>
 
-      <!-- IBAN -->
-      <div class="donativo-card" onclick="copyText(this)">
-        <p class="donativo-card-label">Transferencia</p>
-        <p class="donativo-card-name">Paula & Stampa</p>
-        <p class="donativo-card-value">ES08 1234 5678 9012 3456 7890</p> <!-- ← CAMBIAR -->
-        <p class="donativo-card-hint">Pulse para copiar</p>
-        <p class="donativo-card-confirm">¡Copiado!</p>
-      </div>
-
-      <!-- BIZUM STAMPA -->
-      <div class="donativo-card" onclick="copyText(this)">
-        <p class="donativo-card-label">Bizum</p>
-        <p class="donativo-card-name">Stampa</p>
-        <p class="donativo-card-value">600 000 001</p> <!-- ← CAMBIAR -->
-        <p class="donativo-card-hint">Pulse para copiar</p>
-        <p class="donativo-card-confirm">¡Copiado!</p>
+      <!-- STAMPA -->
+      <div class="donativo-persona">
+        <p class="donativo-persona-name">Stampa</p>
+        <div class="donativo-cards">
+          <div class="donativo-card" onclick="copyText(this)">
+            <p class="donativo-card-label">Bizum</p>
+            <p class="donativo-card-value">600 000 001</p> <!-- ← CAMBIAR -->
+            <p class="donativo-card-hint">Pulsa para copiar</p>
+            <p class="donativo-card-confirm">¡Copiado!</p>
+          </div>
+          <div class="donativo-card" onclick="copyText(this)">
+            <p class="donativo-card-label">Transferencia</p>
+            <p class="donativo-card-value">ES08 1234 5678 9012 3456 7891</p> <!-- ← CAMBIAR -->
+            <p class="donativo-card-hint">Pulsa para copiar</p>
+            <p class="donativo-card-confirm">¡Copiado!</p>
+          </div>
+        </div>
       </div>
 
     </div>
   </div>
 </div>
 
-  <!-- RSVP -->
-  <!--
-    ══════════════════════════════════════════════════════════
-    NETLIFY FORMS — cómo configurar (una sola vez):
-    1. Sube la carpeta a Netlify (arrastra en netlify.com/drop)
-    2. Netlify detecta automáticamente el atributo data-netlify="true"
-    3. Las respuestas aparecen en: Site → Forms → rsvp-boda
-    4. Para exportar CSV: Forms → rsvp-boda → Download CSV
-    5. Puedes activar notificaciones por email en: Site → Forms → Form notifications
-    ══════════════════════════════════════════════════════════
-  -->
-  <div class="rsvp-section" id="confirmar">
-    <div class="rsvp-inner">
-      <p class="section-label">Confirma tu asistencia</p>
-      <h2 class="section-title" style="color: var(--ivory);">Confirmado:</h2>
-
-      <form
-        class="rsvp-form"
-        id="rsvp-form"
-        name="rsvp-boda"
-        method="POST"
-        data-netlify="true"
-        netlify-honeypot="bot-field"
-        onsubmit="handleSubmit(event)"
-      >
-        <!-- Honeypot anti-spam (oculto) -->
-        <input type="hidden" name="form-name" value="rsvp-boda" />
-        <p style="display:none"><input name="bot-field" /></p>
-
-        <div class="rsvp-row">
-          <div class="rsvp-field">
-            <label for="firstName">Nombre</label>
-            <input id="firstName" type="text" name="firstName" required placeholder="Nombre" />
-          </div>
-          <div class="rsvp-field">
-            <label for="lastName">Apellido</label>
-            <input id="lastName" type="text" name="lastName" required placeholder="Apellido" />
-          </div>
-        </div>
-        <div class="rsvp-field">
-          <label for="email">Email</label>
-          <input id="email" type="email" name="email" required placeholder="email@gmail.com" />
-        </div>
-        <div class="rsvp-field">
-          <label for="phone">Teléfono (opcional)</label>
-          <input id="phone" type="tel" name="phone" placeholder="+34 600 000 000" />
-        </div>
-        <div class="rsvp-field">
-          <label for="guests">Número de personas (incluyéndote)</label>
-          <select id="guests" name="guests">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-          </select>
-        </div>
-        <div class="rsvp-field">
-          <label for="notes">Restricciones alimentarias (opcional)</label>
-          <textarea id="notes" name="notes" rows="3" placeholder="Alergias, intolerancias, vegetariano..."></textarea>
-        </div>
-        <div class="rsvp-field">
-          <label for="comments">Comentarios (opcional)</label>
-          <textarea id="comments" name="comments" rows="3" placeholder=""></textarea>
-        </div>
-        <button type="submit" class="rsvp-submit">Confirmar asistencia</button>
-      </form>
-
-      <p id="rsvp-thanks">¡Muchas gracias!</p>
+<!-- CONFIRMAR — Google Form -->
+<div class="rsvp-section" id="confirmar">
+  <div class="rsvp-inner">
+    <p class="section-label">Confirma tu asistencia</p>
+    <h2 class="section-title">Confirmar</h2>
+    <div class="gform-wrap">
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSdZVJwVXc3xKE3yS6JxlgS7cIzLMdkVniDcUMd3Pih3pZW6Bg/viewform?embedded=true"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        loading="lazy">
+        Cargando…
+      </iframe>
     </div>
   </div>
+</div>
 
-  <!-- FOOTER -->
-  <footer>
-    <span class="footer-names">Paula &amp; Stampa</span>
-    7 Noviembre 2026 · Madrid
-  </footer>
-
-</div><!-- #main -->
+<!-- FOOTER -->
+<footer>
+  <span class="footer-names">Paula &amp; Stampa</span>
+  7 Noviembre 2026 · Madrid
+</footer>
 
 <script>
-  /* ── COUNTDOWN ── */
+  /* COUNTDOWN */
   const WEDDING_DATE = new Date('2026-11-07T11:00:00');
   function updateCountdown() {
     const diff = WEDDING_DATE - new Date();
     if (diff <= 0) return;
-    const pad = n => String(Math.floor(n)).padStart(2,'0');
+    const pad = n => String(Math.floor(n)).padStart(2, '0');
     document.getElementById('mcd-days').textContent  = pad(diff / 86400000);
     document.getElementById('mcd-hours').textContent = pad((diff % 86400000) / 3600000);
     document.getElementById('mcd-mins').textContent  = pad((diff % 3600000) / 60000);
@@ -643,52 +331,20 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  /* ── MINI COUNTDOWN: aparece al salir del hero ── */
+  /* MINI COUNTDOWN: aparece al salir del hero */
   const observer = new IntersectionObserver(
     ([e]) => document.getElementById('mini-cd').classList.toggle('visible', !e.isIntersecting),
     { threshold: 0.1 }
   );
   observer.observe(document.getElementById('hero'));
 
-  /* ── COPIAR DONATIVO 
-  function copyDonativo(id) {
-    const text = document.getElementById(id).textContent.trim();
-    navigator.clipboard.writeText(text).then(() => {
-      const c = document.getElementById(id + '-confirm');
-      c.classList.add('show');
-      setTimeout(() => c.classList.remove('show'), 2000);
-    });
-  }── */
-
+  /* COPIAR DONATIVO */
   function copyText(card) {
     const value = card.querySelector('.donativo-card-value').textContent.trim();
     const confirm = card.querySelector('.donativo-card-confirm');
-
     navigator.clipboard.writeText(value).then(() => {
       confirm.classList.add('show');
       setTimeout(() => confirm.classList.remove('show'), 2000);
-  });
-}
-
-  /* ── RSVP — Netlify Forms ── */
-  function handleSubmit(e) {
-    e.preventDefault();
-    const form = e.target;
-    const data = new FormData(form);
-
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(data).toString()
-    })
-    .then(() => {
-      form.style.display = 'none';
-      document.getElementById('rsvp-thanks').style.display = 'block';
-    })
-    .catch(() => {
-      /* Fallback: si falla el fetch (ej. local), igualmente muestra el mensaje */
-      form.style.display = 'none';
-      document.getElementById('rsvp-thanks').style.display = 'block';
     });
   }
 </script>
